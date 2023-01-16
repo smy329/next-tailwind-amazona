@@ -15,3 +15,11 @@
     1. Add data.js
     2. Add images
     3. Render Products
+
+7. Create Product Details
+    1. create product image
+    2. create 3 columns
+    3. show image in first column
+    4. show product info in second column
+    5. show add to card action in third column
+    6. add styles
