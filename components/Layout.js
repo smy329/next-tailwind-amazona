@@ -27,8 +27,8 @@ const Layout = ({ title, children }) => {
           </nav>
         </header>
         <main className='container my-auto mt-4 px-4'>{children}</main>
-              <footer className='flex h-10 shadow-inner justify-center items-center'>
-                  <p>Copyright 2022 Amazona</p>
+        <footer className='flex h-10 shadow-inner justify-center items-center'>
+            <p>Copyright 2022 Amazona</p>
         </footer>
       </div>
     </>
