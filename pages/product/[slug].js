@@ -7,11 +7,11 @@ import data from '../../utils/data';
 import { Store } from '../../utils/Store';
 
 const ProductScreen = () => {
-
+  //getting the state & dispatch
   const {state, dispatch} = useContext(Store)
-    
-    const { query } = useRouter(); 
-    const { slug } = query;
+  const router = useRouter()
+  const { query } = useRouter(); 
+  const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
   console.log({product})
     
@@ -34,6 +34,7 @@ const ProductScreen = () => {
         quantity
       }
     });
+    router.push('/cart')
   }
   return (
     <Layout title={product.title}>
