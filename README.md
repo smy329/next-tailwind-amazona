@@ -51,9 +51,18 @@
     2. create input boxes
     3. add login button
 
+13. Connect to MongoDB
+    1. install mongoose
+    2. install mongodb or use mongodb atlas
+    3. save connection url in .env
+    4. create db utils file
+    5. create sample users
+
 
 ##Used Packages:
 1. npm i -D @types/react
 2. Heroicons: npm install @heroicons/reac
 3. JS-Cookie : npm install js-cookie
 4. React Hook Form: npm install react-hook-for
+5. Mongoose: npm install mongoose
+6. Bcrypt: npm i bcryptjs
