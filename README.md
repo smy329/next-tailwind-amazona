@@ -43,5 +43,17 @@
     2. handle select box change
 
 11. Save Cart Items
-    1. install js-cookie package
+    1. install js-cookie package [npm install js-cookie]
     2. save and retrive cart items
+
+12. Create Login Form
+    1. install react hook form [npm install react-hook-for]
+    2. create input boxes
+    3. add login button
+
+
+##Used Packages:
+1. npm i -D @types/react
+2. Heroicons: npm install @heroicons/reac
+3. JS-Cookie : npm install js-cookie
+4. React Hook Form: npm install react-hook-for
