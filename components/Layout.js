@@ -1,12 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
 import { Store } from '../utils/Store';
 
 const Layout = ({ title, children }) => {
+  const { state } = useContext(Store);
+  const { cart } = state;
 
-    const { state } = useContext(Store);
-    const { cart } = state;
+  //if we dont use useState, useEffect here, it will cause hyration error
+  //https://nextjs.org/docs/messages/react-hydration-error
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  useEffect(() => {
+    //when there will be change in cart.cartItems, setCartItemsCount will be upadated.
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, [cart.cartItems]);
+
   return (
     <>
       <Head>
@@ -23,11 +31,10 @@ const Layout = ({ title, children }) => {
             <div>
               <Link href="/cart" className="p-2">
                 Cart
-                {cart.cartItems.length > 0 && (
-                    <span className='ml-1 rounded bg-red-600 px-2 py-1 text-xs font-bold text-white'>
-                        {cart.cartItems.reduce((a,c) => a+c.quantity, 0)}
-                    </span>
-
+                {cartItemsCount > 0 && (
+                  <span className="ml-1 rounded bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    {cartItemsCount}
+                  </span>
                 )}
               </Link>
               <Link href="/login" className="p-2">
@@ -36,9 +43,9 @@ const Layout = ({ title, children }) => {
             </div>
           </nav>
         </header>
-        <main className='container my-auto mt-4 px-4'>{children}</main>
-        <footer className='flex h-10 shadow-inner justify-center items-center'>
-            <p>Copyright 2022 Amazona</p>
+        <main className="container my-auto mt-4 px-4">{children}</main>
+        <footer className="flex h-10 shadow-inner justify-center items-center">
+          <p>Copyright 2022 Amazona</p>
         </footer>
       </div>
     </>

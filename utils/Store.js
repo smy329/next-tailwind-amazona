@@ -1,11 +1,13 @@
 import { createContext, useReducer } from "react";
+import Cookies from "js-cookie";
 
 export const Store = createContext();
 
 const initialState = {
-    cart: {
-        cartItems: []
-    },
+    // searching 'cart' key in Cookies
+    // if exist use Json.parse to covert the cart(insode cookies) into JS object as it remains as string 
+    // if don't exist, cart is empty
+    cart: Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : { cartItems: []}
 }
 
 function reducer(state, action) {
@@ -30,6 +32,10 @@ function reducer(state, action) {
                 //if you dont find anything on existItem, deconstruct the cartItems and concatenate them with the newItems. This way push the newItem at the end of the cartItem
                 : [...state.cart.cartItems, newItem];
             
+            // set cookies as cart key.
+            // save the cart values that conatins the new cartItems as string. Cause objects cannot be saved in cookies. objects converted through JSON.stringify
+            Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
+            
             //return the previous state with '...state' , only update the cart object
             //keep the previous values with '...state.cart' , only update the cartItems array
             return {...state, cart: { ...state.cart, cartItems }}
@@ -37,10 +43,19 @@ function reducer(state, action) {
         }
             
         case 'CART_REMOVE_ITEM': {
+            //start filtering cartItems inside cart
             const cartItems = state.cart.cartItems.filter(
-                (item) => item.slug !== action.payload.slug
-            );
-            return {...state, cart: {...state.cart, cartItems}}
+          //keep the item if item.slug !== selecetd item slug
+            (item) => item.slug !== action.payload.slug
+          );
+
+          // set cookies as cart key.
+          // save the cart values that conatins the new cartItems as string. Cause objects cannot be saved in cookies. objects converted through JSON.stringify
+          Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
+
+          //return the previous state with '...state' , only update the cart object
+          //keep the previous values with '...state.cart' , only update the cartItems array
+          return { ...state, cart: { ...state.cart, cartItems } };
         }
         default:
             return state;

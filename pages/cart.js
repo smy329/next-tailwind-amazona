@@ -5,8 +5,9 @@ import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import {XCircleIcon} from '@heroicons/react/outline'
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'; 
 
-export default function CartScreen() {
+function CartScreen() {
   const { state, dispatch } = useContext(Store);
   const router = useRouter()
   const {
@@ -122,3 +123,9 @@ export default function CartScreen() {
     </Layout>
   );
 }
+
+// export CartScreen as dynamic page which will be rendered only on client side
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false })
+
+// If we don't do that there will be hydration error 
+// https://nextjs.org/docs/messages/react-hydration-error
