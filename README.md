@@ -58,11 +58,19 @@
     4. create db utils file
     5. create sample users
 
+14. Create Login API
+    1. install next-auth
+    2. craete nextauth.js
+    3. implement signin
+    4. use signin in login form
 
-##Used Packages:
+
+#Used Packages:
 1. npm i -D @types/react
 2. Heroicons: npm install @heroicons/reac
 3. JS-Cookie : npm install js-cookie
 4. React Hook Form: npm install react-hook-for
 5. Mongoose: npm install mongoose
 6. Bcrypt: npm i bcryptjs
+7. Next Auth: npm i next-auth
+8. Toastify: npm i react-toastify
