@@ -9,7 +9,7 @@ const initialState = {
   // if don't exist, cart is empty
   cart: Cookies.get('cart')
     ? JSON.parse(Cookies.get('cart'))
-    : { cartItems: [] },
+    : { cartItems: [], shippingAddress: {} },
 };
 
 function reducer(state, action) {
@@ -66,6 +66,20 @@ function reducer(state, action) {
           cartItems: [],
           shippingAddress: { location: {} },
           paymentMethod: '',
+        },
+      };
+    }
+
+    case 'SAVE_SHIPPING_ADDRESS': {
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          //keep the previous values with '...state.cart.shippingAddress' , only update the address from the payload
+          shippingAddress: {
+            ...state.cart.shippingAddress,
+            ...action.payload,
+          },
         },
       };
     }

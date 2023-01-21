@@ -3,33 +3,35 @@ import Link from 'next/link';
 import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
-import {XCircleIcon} from '@heroicons/react/outline'
+import { XCircleIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic'; 
+import dynamic from 'next/dynamic';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
-  const router = useRouter()
+  const router = useRouter();
   const {
     cart: { cartItems },
   } = state;
-    
+
   const removeItemHandler = (item) => {
     dispatch({
       type: 'CART_REMOVE_ITEM',
-      payload: item
-      })
-  }
+      payload: item,
+    });
+  };
 
   const updateCartHandler = (item, qty) => {
-    //qty string is a string at option. We need to convert the qty string to number.  
-    const quantity = Number(qty)
+    //qty string is a string at option. We need to convert the qty string to number.
+    const quantity = Number(qty);
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: {
-        ...item, quantity
-      }})
-  }
+        ...item,
+        quantity,
+      },
+    });
+  };
   return (
     <Layout title="Shopping Cart">
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
@@ -63,7 +65,7 @@ function CartScreen() {
                           width={50}
                           height={50}
                         />
-                        &npsb;
+                        &nbsp;
                         {item.name}
                       </Link>
                     </td>
@@ -125,7 +127,7 @@ function CartScreen() {
 }
 
 // export CartScreen as dynamic page which will be rendered only on client side
-export default dynamic(() => Promise.resolve(CartScreen), { ssr: false })
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
 
-// If we don't do that there will be hydration error 
+// If we don't do that there will be hydration error
 // https://nextjs.org/docs/messages/react-hydration-error

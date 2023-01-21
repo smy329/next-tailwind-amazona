@@ -75,18 +75,23 @@
     4. use signin in login form
 
 15. Add User Menu
+
     1. check user authentication
     2. install headlessui
     3. show user menu
 
+16. Create Shipping Address
+    1. display address fields
+    2. save address in context
+
 #Used Packages:
 
-1. npm i -D @types/react
-2. Heroicons: npm install @heroicons/reac
-3. JS-Cookie : npm install js-cookie
-4. React Hook Form: npm install react-hook-for
-5. Mongoose: npm install mongoose
-6. Bcrypt: npm i bcryptjs
-7. Next-Auth: npm i next-auth
-8. Toastify: npm i react-toastify
-9. HeadlessUI: npm install @headlessui/react
+17. npm i -D @types/react
+18. Heroicons: npm install @heroicons/reac
+19. JS-Cookie : npm install js-cookie
+20. React Hook Form: npm install react-hook-for
+21. Mongoose: npm install mongoose
+22. Bcrypt: npm i bcryptjs
+23. Next-Auth: npm i next-auth
+24. Toastify: npm i react-toastify
+25. HeadlessUI: npm install @headlessui/react
