@@ -6,6 +6,8 @@ import { Store } from '../utils/Store';
 import { XCircleIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -21,9 +23,14 @@ function CartScreen() {
     });
   };
 
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     //qty string is a string at option. We need to convert the qty string to number.
     const quantity = Number(qty);
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      toast.error('Sorry, product is out of stock');
+      return;
+    }
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: {
@@ -31,6 +38,7 @@ function CartScreen() {
         quantity,
       },
     });
+    toast.success('Product updated in the cart');
   };
   return (
     <Layout title="Shopping Cart">

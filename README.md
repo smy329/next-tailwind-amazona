@@ -96,14 +96,20 @@
     2. load products from db in home and product screen
     3. check product count in stock in add to cart
 
+19. Load Products from MonogoDB
+    1. load products in hme page
+    2. load products in product page
+    3. use product api to count in stock and add to cart
+
 #Used Packages:
 
-17. npm i -D @types/react
-18. Heroicons: npm install @heroicons/reac
-19. JS-Cookie : npm install js-cookie
-20. React Hook Form: npm install react-hook-for
-21. Mongoose: npm install mongoose
-22. Bcrypt: npm i bcryptjs
-23. Next-Auth: npm i next-auth
-24. Toastify: npm i react-toastify
-25. HeadlessUI: npm install @headlessui/react
+1. npm i -D @types/react
+2. Heroicons: npm install @heroicons/reac
+3. JS-Cookie : npm install js-cookie
+4. React Hook Form: npm install react-hook-for
+5. Mongoose: npm install mongoose
+6. Bcrypt: npm i bcryptjs
+7. Next-Auth: npm i next-auth
+8. Toastify: npm i react-toastify
+9. HeadlessUI: npm install @headlessui/react
+10. Axios: npm i axios
