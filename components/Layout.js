@@ -59,7 +59,7 @@ const Layout = ({ title, children }) => {
               {status === 'loading' ? (
                 'Loading'
               ) : session?.user ? (
-                <Menu as="div" classname="relative inline-block">
+                <Menu as="div" className="relative inline-block">
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
@@ -94,7 +94,7 @@ const Layout = ({ title, children }) => {
                   </Menu.Items>
                 </Menu>
               ) : (
-                <Link href="/login" classname="p-2">
+                <Link href="/login" className="p-2">
                   Login
                 </Link>
               )}

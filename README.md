@@ -97,9 +97,16 @@
     3. check product count in stock in add to cart
 
 19. Load Products from MonogoDB
+
     1. load products in hme page
     2. load products in product page
     3. use product api to count in stock and add to cart
+
+20. Create Place Order Screen
+    1. display shipping address
+    2. display payment method
+    3. display order items
+    4. implement create order
 
 #Used Packages:
 
