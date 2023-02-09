@@ -103,10 +103,16 @@
     3. use product api to count in stock and add to cart
 
 20. Create Place Order Screen
+
     1. display shipping address
     2. display payment method
     3. display order items
     4. implement create order
+
+21. Create Order Screen
+    1. implement backend api for order details
+    2. load order data from backend
+    3. display order details
 
 #Used Packages:
 
